@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Stray Kids · Perfil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@200;400;600;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #07070b;
+    --bg-2: #0d0d14;
+    --panel: rgba(255,255,255,0.04);
+    --panel-border: rgba(255,255,255,0.09);
+    --text: #f2f2f5;
+    --muted: #9a9aa8;
+    --accent: #f8d90a;
+    --accent-2: #ff5e3a;
+    --radius: 20px;
+    --font-display: "Space Grotesk", sans-serif;
+    --font-hero: "Sora", sans-serif;
+    --font-body: "Inter", sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+      radial-gradient(1000px 600px at 85% -10%, rgba(248,217,10,0.09), transparent 60%),
+      radial-gradient(900px 500px at -10% 30%, rgba(255,94,58,0.07), transparent 55%),
+      radial-gradient(800px 800px at 50% 110%, rgba(120,90,255,0.07), transparent 60%),
+      var(--bg);
+  }
+
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.5;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  }
+
+  ::selection { background: var(--accent); color: #000; }
+  a { color: inherit; text-decoration: none; }
+
+  /* ---------- Nav ---------- */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 6vw;
+    transition: background 0.4s ease, padding 0.4s ease, backdrop-filter 0.4s ease;
+  }
+
+  nav.scrolled {
+    background: rgba(7,7,11,0.72);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--panel-border);
+    padding: 12px 6vw;
+  }
+
+  .nav-brand {
+    font-family: var(--font-hero);
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .nav-brand .logo-dot {
+    width: 22px; height: 22px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    box-shadow: 0 0 18px rgba(248,217,10,0.5);
+  }
+
+  .btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 20px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.05);
+    color: var(--text);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+  }
+
+  .btn-back:hover {
+    transform: translateY(-2px);
+    background: var(--accent);
+    color: #000;
+    box-shadow: 0 10px 30px rgba(248,217,10,0.25);
+  }
+
+  /* ---------- Sections ---------- */
+  section { padding: 130px 6vw; }
+  .section-head { margin-bottom: 60px; max-width: 700px; }
+  .section-head .kicker {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 12px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 18px;
+  }
+  .section-head .kicker::before { content: ""; width: 34px; height: 1px; background: var(--accent); }
+  .section-head h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(32px, 4.5vw, 52px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .section-head p { color: var(--muted); font-size: 15px; line-height: 1.7; }
+
+  /* ---------- Hero ---------- */
+  .hero-min {
+    min-height: 96vh;
+    display: grid;
+    grid-template-columns: minmax(0, 520px) 1fr;
+    gap: 70px;
+    align-items: center;
+    padding: 150px 6vw 90px;
+  }
+
+  .hero-photo {
+    position: relative;
+    border-radius: 26px;
+    overflow: hidden;
+    aspect-ratio: 3 / 4;
+    border: 1px solid var(--panel-border);
+  }
+
+  .hero-photo::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 55%, rgba(7,7,11,0.5) 100%);
+  }
+
+  .hero-photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: saturate(0.9);
+  }
+
+  .hero-photo .hero-num {
+    position: absolute;
+    top: 18px; right: 22px;
+    font-family: var(--font-display);
+    font-size: 15px;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.85);
+    z-index: 2;
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: rgba(7,7,11,0.5);
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .hero-body .eyebrow {
+    font-size: 12px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .hero-body h1 {
+    font-family: var(--font-hero);
+    font-weight: 800;
+    font-size: clamp(56px, 8vw, 110px);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    background: linear-gradient(180deg, #fff 20%, #8b8b98 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-body .kr-name {
+    font-size: 15px;
+    letter-spacing: 3px;
+    color: var(--muted);
+    margin-top: 14px;
+    text-transform: uppercase;
+  }
+
+  .hero-body .tagline {
+    margin-top: 22px;
+    font-family: var(--font-display);
+    font-size: 20px;
+    color: #ddd;
+  }
+
+  .hero-tags { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 9px; }
+  .role-tag {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 8px 15px;
+    border-radius: 999px;
+    background: rgba(248,217,10,0.1);
+    border: 1px solid rgba(248,217,10,0.28);
+    color: var(--accent);
+  }
+  .role-tag.unit { background: rgba(255,94,58,0.1); border-color: rgba(255,94,58,0.32); color: #ff8b6f; }
+
+  /* ---------- Fact table ---------- */
+  .fact-card {
+    border-radius: var(--radius);
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    overflow: hidden;
+  }
+
+  .fact {
+    padding: 20px 28px;
+    border-bottom: 1px solid var(--panel-border);
+    transition: background 0.3s ease;
+  }
+
+  .fact:last-child { border-bottom: none; }
+
+  .fact .f-label {
+    font-size: 10.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .fact .f-value {
+    font-size: 15.5px;
+    line-height: 1.5;
+    font-weight: 500;
+  }
+
+  /* ---------- Story ---------- */
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .story-card {
+    padding: 38px;
+    border-radius: var(--radius);
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    transition: transform 0.4s ease, border-color 0.4s ease;
+  }
+
+  .story-card:hover { transform: translateY(-5px); border-color: rgba(248,217,10,0.3); }
+
+  .story-card .s-icon {
+    font-family: var(--font-display);
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .story-card .s-icon.alt { color: var(--accent-2); }
+
+  .story-card h3 {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .story-card p { color: var(--muted); font-size: 15px; line-height: 1.8; }
+
+  /* ---------- Songs ---------- */
+  .song-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .song {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 22px;
+    border-radius: 16px;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+  }
+
+  .song:hover { transform: translateX(6px); border-color: rgba(248,217,10,0.35); background: rgba(255,255,255,0.06); }
+
+  .song .track {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  .song .track small { display: block; font-weight: 400; font-size: 12px; color: var(--accent); margin-top: 2px; letter-spacing: 1px; }
+
+  .song .lbl {
+    margin-left: auto;
+    text-align: right;
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+  }
+
+  /* ---------- Gallery ---------- */
+  .era-block { margin-bottom: 48px; }
+  .era-block:last-child { margin-bottom: 0; }
+
+  .era-title {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .era-title .bar { width: 34px; height: 2px; background: var(--accent); }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .gal {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid var(--panel-border);
+  }
+
+  .gal img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.92);
+    transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.6s ease;
+  }
+
+  .gal:hover img { transform: scale(1.05); filter: brightness(1); }
+
+  .gal figcaption {
+    position: absolute;
+    left: 14px; bottom: 12px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #eee;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.9);
+    background: rgba(7,7,11,0.55);
+    padding: 7px 12px;
+    border-radius: 999px;
+    backdrop-filter: blur(6px);
+  }
+
+  /* ---------- Facts / curiosities ---------- */
+  .fact-list { display: flex; flex-direction: column; gap: 16px; }
+
+  .fact-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 20px 24px;
+    border-radius: 14px;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+  }
+
+  .fact-item .dot {
+    flex-shrink: 0;
+    width: 8px; height: 8px;
+    margin-top: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent);
+  }
+
+  .fact-item p { color: #d8d8e0; font-size: 15px; line-height: 1.6; }
+
+  /* ---------- Prev / next ---------- */
+  .member-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 70px 6vw 60px;
+    border-top: 1px solid var(--panel-border);
+  }
+
+  .mnav {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-width: 46%;
+  }
+
+  .mnav.next { text-align: right; align-items: flex-end; }
+
+  .mnav .mn-label {
+    font-size: 10.5px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .mnav .mn-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+  }
+
+  .mnav:hover .mn-name { color: var(--accent); }
+
+  /* ---------- Footer ---------- */
+  footer {
+    border-top: 1px solid var(--panel-border);
+    padding: 54px 6vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 18px;
+  }
+
+  footer .f-logo {
+    font-family: var(--font-hero);
+    font-weight: 800;
+    letter-spacing: 6px;
+    font-size: 22px;
+    display: flex; align-items: center; gap: 12px;
+  }
+
+  footer .f-logo .logo-dot { width: 16px; height: 16px; border-radius: 4px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); }
+  footer p { color: var(--muted); font-size: 12.5px; letter-spacing: 1px; }
+  footer .credit { font-size: 11px; color: #5c5c68; max-width: 720px; line-height: 1.7; }
+  footer .credit a { color: #8b8b98; text-decoration: underline; }
+
+  .hidden { display: none; }
+  .notfound { min-height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; text-align: center; padding: 0 6vw; }
+  .notfound h1 { font-family: var(--font-hero); font-weight: 800; font-size: clamp(40px, 7vw, 80px); text-transform: uppercase; }
+  .notfound p { color: var(--muted); }
+
+  /* ---------- Reveal ---------- */
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .reveal.visible { opacity: 1; transform: none; }
+  .reveal-d1 { transition-delay: 0.08s; }
+  .reveal-d2 { transition-delay: 0.16s; }
+  .reveal-d3 { transition-delay: 0.24s; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 1000px) {
+    .hero-min { grid-template-columns: 1fr; gap: 44px; padding-top: 130px; text-align: center; }
+    .hero-photo { max-width: 460px; margin: 0 auto; width: 100%; }
+    .hero-tags, .tagline { justify-content: center; }
+    .story-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    section { padding: 90px 5vw; }
+    .song-list { grid-template-columns: 1fr; }
+    .member-nav { flex-direction: column; }
+    .mnav, .mnav.next { max-width: 100%; text-align: left; align-items: flex-start; }
+    nav { padding: 16px 5vw; }
+    .btn-back span.txt { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a class="nav-brand" href="index.html"><span class="logo-dot"></span> SKZ</a>
+  <button class="btn-back" id="btnBack" type="button"><span>←</span><span class="txt">Volver</span></button>
+</nav>
+
+<main id="page" class="hidden"></main>
+
+<footer>
+  <div class="f-logo"><span class="logo-dot"></span> STRAY KIDS</div>
+  <p>TRIBUTO HECHO POR FANS · NO AFILIADO CON JYP ENTERTAINMENT</p>
+  <p class="credit">
+    Fotos de perfil y época mediante <a href="https://commons.wikimedia.org/wiki/Category:Stray_Kids" target="_blank" rel="noopener">Wikimedia Commons</a>, usadas bajo sus respectivas licencias. Los derechos pertenecen a los fotógrafos (HLL/Imazins, KBS, Marie Claire Korea, etc.) y a sus titulares.
+  </p>
+  <p class="credit">Hecho por Trini con ♥</p>
+</footer>
+
+<script src="members.js"></script>
+<script>
+  const MONTHS_ES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+
+  function formatDate(iso) {
+    const d = new Date(iso + "T12:00:00");
+    return { day: d.getDate(), month: MONTHS_ES[d.getMonth()], year: d.getFullYear() };
+  }
+
+  function calcAge(iso) {
+    const now = new Date();
+    const d = new Date(iso + "T12:00:00");
+    let age = now.getFullYear() - d.getFullYear();
+    const m = now.getMonth() - d.getMonth();
+    if (m < 0 || (m === 0 && now.getDate() < d.getDate())) age--;
+    return age;
+  }
+
+  const NAV = document.getElementById("nav");
+  window.addEventListener("scroll", () => {
+    NAV.classList.toggle("scrolled", window.scrollY > 40);
+  });
+
+  document.getElementById("btnBack").addEventListener("click", () => {
+    if (history.length > 1) history.back();
+    else location.href = "index.html";
+  });
+
+  function el(tag, cls, html) {
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (html != null) e.innerHTML = html;
+    return e;
+  }
+
+  function render(m, idx) {
+    const page = document.getElementById("page");
+
+    const hero = el("section", "hero-min");
+    const birth = formatDate(m.birth);
+    hero.innerHTML = `
+      <div class="hero-photo reveal">
+        <span class="hero-num">${m.num}</span>
+        <img src="${m.hero}" alt="${m.name} de Stray Kids" />
+      </div>
+      <div class="hero-body">
+        <div class="eyebrow reveal">Stray Kids · ${m.unit}</div>
+        <h1 class="reveal">${m.name}</h1>
+        <div class="kr-name reveal">${m.fullName} · ${m.krName}</div>
+        <p class="tagline reveal">“${m.tagline}”</p>
+        <div class="hero-tags reveal">
+          ${m.roleTags.map(t => `<span class="role-tag">${t}</span>`).join("")}
+          <span class="role-tag unit">${m.unit} · ${m.unitId}</span>
+        </div>
+      </div>
+    `;
+    page.appendChild(hero);
+
+    const facts = el("section", "facts reveal");
+    facts.innerHTML = `
+      <div class="section-head">
+        <div class="kicker">Ficha rápida</div>
+        <h2>Quién es</h2>
+      </div>
+      <div class="fact-card">
+        <div class="fact"><div class="f-label">Nombre completo</div><div class="f-value">${m.fullName}</div></div>
+        <div class="fact"><div class="f-label">Nombre coreano</div><div class="f-value">${m.krName}</div></div>
+        <div class="fact"><div class="f-label">Fecha de nacimiento</div><div class="f-value">${birth.day} de ${birth.month} de ${birth.year} · ${calcAge(m.birth)} años</div></div>
+        <div class="fact"><div class="f-label">Lugar de nacimiento</div><div class="f-value">${m.birthPlace}</div></div>
+        <div class="fact"><div class="f-label">Nacionalidad</div><div class="f-value">${m.nationality}</div></div>
+        <div class="fact"><div class="f-label">Se unió a JYP</div><div class="f-value">${m.joinedLabel}</div></div>
+        ${m.hometown ? `<div class="fact"><div class="f-label">Origen</div><div class="f-value">${m.hometown}</div></div>` : '<div class="fact"><div class="f-label">Subunidad</div><div class="f-value">Stray Kids · 8 miembros</div></div>'}
+        <div class="fact"><div class="f-label">Debut</div><div class="f-value">Stray Kids · Mar 2018 · ${m.num} de 8</div></div>
+      </div>
+    `;
+    page.appendChild(facts);
+
+    const story = el("section", "story reveal");
+    story.innerHTML = `
+      <div class="section-head">
+        <div class="kicker">El origen</div>
+        <h2>Su historia</h2>
+      </div>
+      <div class="story-grid">
+        <div class="story-card">
+          <div class="s-icon">01 · Cómo llegó a Stray Kids</div>
+          <h3>El camino</h3>
+          <p>${m.story}</p>
+        </div>
+      </div>
+    `;
+    page.appendChild(story);
+
+    const songs = el("section", "songs reveal");
+    songs.innerHTML = `
+      <div class="section-head">
+        <div class="kicker">Discografía individual</div>
+        <h2>Canciones propias</h2>
+        <p>Sobres SKZ-PLAYER y SKZ-RECORD, solos, dúos y participaciones.</p>
+      </div>
+      <div class="song-list">
+        ${m.songs.map(s => `
+          <div class="song">
+            <div class="track">${s.t}${s.kr ? `<small>${s.kr}</small>` : ""}</div>
+            <div class="lbl">${s.label}</div>
+          </div>`).join("")}
+      </div>
+    `;
+    page.appendChild(songs);
+
+    const gallery = el("section", "gallery reveal");
+    const preImgs = m.gallery.filter(g => g.pre);
+    const recentImgs = m.gallery.filter(g => g.recent);
+    const block = (title, imgs) =>
+      imgs.length ? `
+        <div class="era-block">
+          <div class="era-title"><span class="bar"></span>${title}</div>
+          <div class="gallery">
+            ${imgs.map(g => g.pre || g.recent).map(i =>
+              `<figure class="gal"><img src="${i.src}" alt="${m.name} · ${i.cap}" loading="lazy" /><figcaption>${i.cap}</figcaption></figure>`
+            ).join("")}
+          </div>
+        </div>` : "";
+
+    gallery.innerHTML = `
+      <div class="section-head">
+        <div class="kicker">Fotos</div>
+        <h2>Antes y ahora</h2>
+      </div>
+      ${block("Pre-debut & era debut · 2017–2019", preImgs)}
+      ${block("2024–2026", recentImgs)}
+    `;
+    page.appendChild(gallery);
+
+    const factsSection = el("section", "fun reveal");
+    factsSection.innerHTML = `
+      <div class="section-head">
+        <div class="kicker">Extra</div>
+        <h2>Datos curiosos</h2>
+      </div>
+      <div class="fact-list">
+        ${m.facts.map(f => `<div class="fact-item"><span class="dot"></span><p>${f}</p></div>`).join("")}
+      </div>
+    `;
+    page.appendChild(factsSection);
+
+    const prev = MEMBERS[(idx - 1 + MEMBERS.length) % MEMBERS.length];
+    const next = MEMBERS[(idx + 1) % MEMBERS.length];
+
+    const navBlock = el("div", "member-nav reveal");
+    navBlock.innerHTML = `
+      <a class="mnav" href="member.html?id=${prev.id}">
+        <span class="mn-label">← Anterior</span>
+        <span class="mn-name">${prev.name}</span>
+      </a>
+      <a class="mnav next" href="member.html?id=${next.id}">
+        <span class="mn-label">Siguiente →</span>
+        <span class="mn-name">${next.name}</span>
+      </a>
+    `;
+    page.appendChild(navBlock);
+
+    document.title = `${m.name} · Stray Kids`;
+    page.classList.remove("hidden");
+    window.scrollTo(0, 0);
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    page.querySelectorAll(".reveal").forEach(el => io.observe(el));
+  }
+
+  function renderNotFound() {
+    const page = document.getElementById("page");
+    page.innerHTML = `
+      <div class="notfound">
+        <h1>404</h1>
+        <p>Ese lobo no está en la manada.</p>
+        <a class="btn-back" href="index.html">← Volver</a>
+      </div>
+    `;
+    document.title = "No encontrado · Stray Kids";
+    page.classList.remove("hidden");
+  }
+
+  const params = new URLSearchParams(location.search);
+  const id = params.get("id") || "";
+  const idx = MEMBERS.findIndex(m => m.id === id);
+
+  if (idx >= 0) render(MEMBERS[idx], idx);
+  else renderNotFound();
+</script>
+</body>
+</html>

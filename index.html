@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>STRAY KIDS · 8 Members</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@200;400;600;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #07070b;
+    --bg-2: #0d0d14;
+    --panel: rgba(255,255,255,0.04);
+    --panel-border: rgba(255,255,255,0.09);
+    --text: #f2f2f5;
+    --muted: #9a9aa8;
+    --accent: #f8d90a;
+    --accent-2: #ff5e3a;
+    --radius: 20px;
+    --font-display: "Space Grotesk", sans-serif;
+    --font-hero: "Sora", sans-serif;
+    --font-body: "Inter", sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+      radial-gradient(1000px 600px at 85% -10%, rgba(248,217,10,0.09), transparent 60%),
+      radial-gradient(900px 500px at -10% 30%, rgba(255,94,58,0.07), transparent 55%),
+      radial-gradient(800px 800px at 50% 110%, rgba(120,90,255,0.07), transparent 60%),
+      var(--bg);
+  }
+
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.5;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  }
+
+  ::selection { background: var(--accent); color: #000; }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ---------- Nav ---------- */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 6vw;
+    transition: background 0.4s ease, padding 0.4s ease, backdrop-filter 0.4s ease;
+  }
+
+  nav.scrolled {
+    background: rgba(7,7,11,0.72);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--panel-border);
+    padding: 14px 6vw;
+  }
+
+  .nav-brand {
+    font-family: var(--font-hero);
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .nav-brand .logo-dot {
+    width: 22px; height: 22px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    box-shadow: 0 0 18px rgba(248,217,10,0.5);
+  }
+
+  .nav-links { display: flex; gap: 34px; font-size: 13px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); }
+
+  .nav-links a { position: relative; padding: 6px 0; transition: color 0.25s; }
+  .nav-links a::after {
+    content: ""; position: absolute; left: 0; bottom: 0;
+    width: 0; height: 2px; background: var(--accent);
+    transition: width 0.3s ease;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-links a:hover::after { width: 100%; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 6vw;
+    position: relative;
+  }
+
+  .hero .eyebrow {
+    font-size: 13px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 22px;
+    animation: fadeIn 1s 0.1s both;
+  }
+
+  .hero h1 {
+    font-family: var(--font-hero);
+    font-weight: 800;
+    font-size: clamp(64px, 14vw, 170px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    animation: fadeInUp 1s 0.2s both;
+    background: linear-gradient(180deg, #fff 20%, #8b8b98 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero h1 .skz {
+    background: linear-gradient(120deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero p.sub {
+    margin-top: 26px;
+    max-width: 560px;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.7;
+    animation: fadeInUp 1s 0.35s both;
+  }
+
+  .hero .cta {
+    margin-top: 42px;
+    animation: fadeInUp 1s 0.5s both;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 32px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  }
+
+  .btn:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(248,217,10,0.25); background: var(--accent); color: #000; }
+
+  .btn .arrow { transition: transform 0.3s ease; }
+  .btn:hover .arrow { transform: translateY(4px); }
+
+  .hero .scroll-hint {
+    position: absolute;
+    bottom: 34px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    animation: fadeIn 1s 0.8s both;
+  }
+
+  .scroll-hint .line {
+    width: 1px; height: 46px;
+    background: linear-gradient(180deg, var(--accent), transparent);
+    overflow: hidden;
+    position: relative;
+  }
+  .scroll-hint .line::after {
+    content: ""; position: absolute; left: 0; top: -100%;
+    width: 1px; height: 100%;
+    background: #fff;
+    animation: scrollDrop 1.8s ease-in-out infinite;
+  }
+
+  /* ---------- Section base ---------- */
+  section { padding: 130px 6vw; }
+
+  .section-head { margin-bottom: 70px; max-width: 640px; }
+  .section-head .kicker {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 12px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 18px;
+  }
+  .section-head .kicker::before { content: ""; width: 34px; height: 1px; background: var(--accent); }
+  .section-head h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(34px, 5vw, 58px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .section-head p { color: var(--muted); font-size: 15px; line-height: 1.7; }
+
+  /* ---------- Stats / ticker ---------- */
+  .ticker {
+    display: flex;
+    overflow: hidden;
+    border-block: 1px solid var(--panel-border);
+    background: rgba(255,255,255,0.02);
+    padding: 20px 0;
+    white-space: nowrap;
+    position: relative;
+  }
+  .ticker-track {
+    display: flex;
+    width: max-content;
+    animation: ticker 26s linear infinite;
+  }
+  .ticker span {
+    font-family: var(--font-display);
+    font-size: 15px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-right: 60px;
+  }
+  .ticker span b { color: var(--accent); font-weight: 700; }
+
+  /* ---------- Members grid ---------- */
+  .members-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+  }
+
+  .member {
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--bg-2);
+    border: 1px solid var(--panel-border);
+    position: relative;
+    aspect-ratio: 3 / 4;
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s ease, border-color 0.4s ease;
+    cursor: pointer;
+  }
+
+  .member:hover {
+    transform: translateY(-10px) scale(1.015);
+    border-color: rgba(248,217,10,0.4);
+    box-shadow: 0 30px 70px rgba(0,0,0,0.6), 0 0 40px rgba(248,217,10,0.12);
+  }
+
+  .member .photo {
+    position: absolute; inset: 0;
+  }
+
+  .member .photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: saturate(0.85) brightness(0.82);
+    transform: scale(1.04);
+    transition: transform 1s ease, filter 0.7s ease;
+  }
+
+  .member:hover .photo img {
+    transform: scale(1.1);
+    filter: saturate(1.05) brightness(1);
+  }
+
+  .member .shade {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 30%, rgba(7,7,11,0.55) 72%, #07070b 100%);
+  }
+
+  .member .num {
+    position: absolute;
+    top: 16px; right: 18px;
+    font-family: var(--font-display);
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.55);
+  }
+
+  .member .info {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    padding: 26px;
+    transform: translateY(6px);
+    transition: transform 0.5s ease;
+  }
+
+  .member:hover .info { transform: translateY(0); }
+
+  .member .name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: -0.01em;
+  }
+
+  .member .kr {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin-top: 3px;
+    text-transform: uppercase;
+  }
+
+  .member .roles {
+    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.6s ease, opacity 0.5s ease, margin-top 0.6s ease;
+  }
+
+  .member:hover .roles { max-height: 120px; opacity: 1; margin-top: 16px; }
+
+  .member .role-tag {
+    font-size: 10.5px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 6px 11px;
+    border-radius: 999px;
+    background: rgba(248,217,10,0.1);
+    border: 1px solid rgba(248,217,10,0.25);
+    color: var(--accent);
+  }
+
+  .member .role-tag.unit {
+    background: rgba(255,94,58,0.1);
+    border-color: rgba(255,94,58,0.3);
+    color: #ff8b6f;
+  }
+
+  .member .bio {
+    margin-top: 12px;
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .member-card { display: block; text-decoration: none; color: inherit; }
+  .member-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: var(--radius); }
+
+  .member .view-profile {
+    position: absolute;
+    top: 16px; left: 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 9px 15px;
+    border-radius: 999px;
+    background: rgba(7,7,11,0.66);
+    border: 1px solid rgba(248,217,10,0.45);
+    color: var(--accent);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .member-card:hover .view-profile,
+  .member-card:focus-visible .view-profile { opacity: 1; transform: none; }
+
+  /* ---------- Group photos ---------- */
+  .group-list { display: flex; flex-direction: column; gap: 44px; }
+
+  .group-card {
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid var(--panel-border);
+    position: relative;
+    background: var(--bg-2);
+  }
+
+  .group-card img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 21 / 9;
+    object-fit: cover;
+    filter: brightness(0.9);
+    transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.8s ease;
+  }
+
+  .group-card:hover img { transform: scale(1.04); filter: brightness(1); }
+
+  .group-card .cap {
+    position: absolute;
+    left: 26px; bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .group-card .cap .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 14px var(--accent);
+  }
+
+  .group-card .cap span {
+    font-family: var(--font-display);
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ddd;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.8);
+  }
+
+  /* ---------- Sub-units ---------- */
+  .units { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+  .unit {
+    padding: 34px;
+    border-radius: var(--radius);
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    transition: transform 0.4s ease, border-color 0.4s ease, background 0.4s ease;
+  }
+
+  .unit:hover {
+    transform: translateY(-6px);
+    border-color: rgba(248,217,10,0.35);
+    background: rgba(255,255,255,0.06);
+  }
+
+  .unit h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .unit p { color: var(--muted); font-size: 14px; line-height: 1.7; }
+
+  .unit .members-row { margin-top: 20px; display: flex; gap: 26px; }
+  .unit .members-row span { font-weight: 600; font-size: 15px; color: #ddd; }
+  .unit .members-row small { display: block; font-size: 11px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-top: 4px; }
+
+  /* ---------- Group overview ---------- */
+  .overview-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  .overview-card {
+    padding: 38px;
+    border-radius: var(--radius);
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    transition: transform 0.4s ease, border-color 0.4s ease;
+  }
+
+  .overview-card:hover { transform: translateY(-5px); border-color: rgba(248,217,10,0.3); }
+
+  .overview-card h3 {
+    font-family: var(--font-display);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .overview-card p { color: var(--muted); font-size: 15px; line-height: 1.8; }
+
+  .overview-card .stats {
+    margin-top: 22px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .overview-card .stat {
+    padding: 16px;
+    border-radius: 13px;
+    background: rgba(7,7,11,0.45);
+    border: 1px solid var(--panel-border);
+  }
+
+  .overview-card .stat b { display: block; font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--text); }
+  .overview-card .stat span { font-size: 11px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+
+  .top-lists {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .top-col {
+    padding: 34px;
+    border-radius: var(--radius);
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+  }
+
+  .top-col h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .top-col h3 .bar { width: 34px; height: 2px; background: var(--accent); }
+
+  .top-item {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--panel-border);
+    transition: transform 0.25s ease;
+  }
+
+  .top-item:last-child { border-bottom: none; }
+  .top-item:hover { transform: translateX(6px); }
+
+  .top-item .rank {
+    flex-shrink: 0;
+    width: 42px; height: 42px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 15px;
+    background: rgba(248,217,10,0.1);
+    border: 1px solid rgba(248,217,10,0.3);
+    color: var(--accent);
+  }
+
+  .top-item .rank.top { background: linear-gradient(135deg, var(--accent), var(--accent-2)); border: none; color: #000; }
+
+  .top-item .t-info { min-width: 0; }
+
+  .top-item .t-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .top-item .t-name small { display: inline; font-weight: 400; font-size: 12px; color: var(--muted); letter-spacing: 0.5px; }
+  .top-item .t-desc { font-size: 12px; color: var(--muted); margin-top: 3px; line-height: 1.5; }
+
+  /* ---------- Footer ---------- */
+  footer {
+    border-top: 1px solid var(--panel-border);
+    padding: 54px 6vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 18px;
+  }
+
+  footer .f-logo {
+    font-family: var(--font-hero);
+    font-weight: 800;
+    letter-spacing: 6px;
+    font-size: 22px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  footer .f-logo .logo-dot { width: 16px; height: 16px; border-radius: 4px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); }
+
+  footer p { color: var(--muted); font-size: 12.5px; letter-spacing: 1px; }
+  footer .credit { font-size: 11px; color: #5c5c68; max-width: 620px; line-height: 1.7; }
+  footer .credit a { color: #8b8b98; text-decoration: underline; }
+
+  /* ---------- Reveal on scroll ---------- */
+  .reveal { opacity: 0; transform: translateY(46px); transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .reveal.visible { opacity: 1; transform: none; }
+  .reveal-d1 { transition-delay: 0.08s; }
+  .reveal-d2 { transition-delay: 0.16s; }
+  .reveal-d3 { transition-delay: 0.24s; }
+  .reveal-d4 { transition-delay: 0.32s; }
+
+  /* ---------- Animations ---------- */
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px);} to { opacity: 1; transform: none; } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes scrollDrop { 0% { top: -100%; } 100% { top: 100%; } }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 1100px) {
+    .members-grid { grid-template-columns: repeat(3, 1fr); }
+    .units { grid-template-columns: 1fr; }
+    .overview-grid { grid-template-columns: 1fr; }
+    .top-lists { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 760px) {
+    .desk-only { display: none; }
+    .members-grid { grid-template-columns: repeat(2, 1fr); }
+    .nav-links { display: none; }
+    section { padding: 90px 5vw; }
+    .hero h1 { font-size: clamp(52px, 18vw, 90px); }
+    .group-card img { aspect-ratio: 16 / 10; }
+    .member .roles { max-height: 120px; opacity: 1; margin-top: 16px; }
+    .member .kr, .member .roles, .member .bio { display: none; }
+    .member .info { padding: 18px; }
+    .member .name { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-brand"><span class="logo-dot"></span> SKZ</div>
+  <div class="nav-links">
+    <a href="#overview">El Grupo</a>
+    <a href="#members">Miembros</a>
+    <a href="#group">La Manada</a>
+    <a href="#units">Unidades</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="eyebrow">8 Miembros<span class="desk-only"> · Boy Band</span> · K-Pop</div>
+  <h1>Stray<br /><span class="skz">Kids</span></h1>
+  <p class="sub">Ocho voces, una manada. Un tributo hecho por fans a Bang Chan, Lee Know, Changbin, Hyunjin, Han, Felix, Seungmin e I.N — los lobos de 3RACHA y más allá.</p>
+  <div class="cta"><a class="btn" href="#members">Conoce la manada <span class="arrow">↓</span></a></div>
+  <div class="scroll-hint"><span>Desliza</span><div class="line"></div></div>
+</header>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track" id="ticker">
+    <span>방찬 <b>·</b> 리노 <b>·</b> 창빈 <b>·</b> 현진 <b>·</b> 한 <b>·</b> 필릭스 <b>·</b> 승민 <b>·</b> 아이엔</span>
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<section id="overview">
+  <div class="section-head reveal">
+    <div class="kicker">01 — El Grupo</div>
+    <h2>La manada en números</h2>
+    <p>Ocho lobos, un mismo ADN: autoproducción, energía cruda y récords que parecen de otro planeta.</p>
+  </div>
+
+  <div class="overview-grid">
+    <div class="overview-card reveal">
+      <h3>Quiénes son</h3>
+      <p>Stray Kids debutó el 25 de marzo de 2018 bajo JYP Entertainment, nacido del reality homónimo en el que Bang Chan eligió a sus propios integrantes. Son un grupo "hecho a sí mismo": el trío 3RACHA (Bang Chan, Changbin y Han) escribe, compone y produce casi toda la música. Su sonido mezcla EDM, hip-hop y rock, y su fandom se llama <b style="color:#f8d90a">STAY</b>.</p>
+      <div class="stats">
+        <div class="stat"><b>25 mar 2018</b><span>Debut oficial</span></div>
+        <div class="stat"><b>8</b><span>Miembros</span></div>
+        <div class="stat"><b>9×</b><span>#1 Billboard 200 consecutivos</span></div>
+        <div class="stat"><b>3RACHA</b><span>Producción propia</span></div>
+      </div>
+    </div>
+    <div class="overview-card reveal reveal-d1">
+      <h3>El logro que rompió el molde</h3>
+      <p>En 2022, <b style="color:#f8d90a">ODDINARY</b> llevó a Stray Kids por primera vez al #1 del Billboard 200 estadounidense. Desde entonces sumaron nueve álbumes consecutivos en la cima —un récord que iguala a The Beatles— y se consolidaron como el grupo de K-pop más veloz en conquistar los charts globales, con giras mundiales sold out y estadios llenos en todo el planeta.</p>
+      <div class="stats">
+        <div class="stat"><b>9×</b><span>#1 Billboard 200 consecutivos</span></div>
+        <div class="stat"><b>The Beatles</b><span>Racha histórica igualada</span></div>
+        <div class="stat"><b>Headliner</b><span>Governors Ball · Lollapalooza · Rock in Rio</span></div>
+        <div class="stat"><b>Sold out</b><span>Giras mundiales (Dominate)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="top-lists">
+    <div class="top-col reveal">
+      <h3><span class="bar"></span>Top 5 canciones</h3>
+      <div class="top-item">
+        <div class="rank top">1</div>
+        <div class="t-info">
+          <div class="t-name">God's Menu <small>· 2020 · GO LIVE</small></div>
+          <div class="t-desc">El himno que definió el sonido de Stray Kids: la "cocina" que les abrió el mundo.</div>
+        </div>
+      </div>
+      <div class="top-item">
+        <div class="rank">2</div>
+        <div class="t-info">
+          <div class="t-name">Thunderous <small>· 2021 · NOEASY</small></div>
+          <div class="t-desc">Trap coreano con fanfarrias: su primer gran éxito mundial.</div>
+        </div>
+      </div>
+      <div class="top-item">
+        <div class="rank">3</div>
+        <div class="t-info">
+          <div class="t-name">MANIAC <small>· 2022 · ODDINARY</small></div>
+          <div class="t-desc">El explosivo que los puso en la mira global con el reto de baile.</div>
+        </div>
+      </div>
+      <div class="top-item">
+        <div class="rank">4</div>
+        <div class="t-info">
+          <div class="t-name">S-Class <small>· 2023 · 5-STAR</small></div>
+          <div class="t-desc">El track que encabezó su cuarto #1 consecutivo.</div>
+        </div>
+      </div>
+      <div class="top-item">
+        <div class="rank">5</div>
+        <div class="t-info">
+          <div class="t-name">Chk Chk Boom <small>· 2024 · ATE</small></div>
+          <div class="t-desc">Su hit más viral con Ryan Reynolds en el video.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="top-col reveal reveal-d1">
+      <h3><span class="bar"></span>Top 5 álbumes</h3>
+      <div class="top-item">
+        <div class="rank top">1</div>
+        <div class="t-info">
+          <div class="t-name">GO LIVE <small>· 2020</small></div>
+          <div class="t-desc">Su primer álbum de estudio: el punto de quiebre de "God's Menu".</div>
+        </div>
+      </div>
+      <div class="top-item">
+        <div class="rank">2</div>
+        <div class="t-info">
+          <div class="t-name">NOEASY <small>· 2021</small></div>
+          <div class="t-desc">Su primer millón de ventas: Stray Kids dejan de ser promesa.</div>
+        </div>
+      </div>
+      <div class="top-item">
+        <div class="rank">3</div>
+        <div class="t-info">
+          <div class="t-name">ODDINARY <small>· 2022</small></div>
+          <div class="t-desc">Su primer #1 en el Billboard 200: el salto a la élite global.</div>
+        </div>
+      </div>
+      <div class="top-item">
+        <div class="rank">4</div>
+        <div class="t-info">
+          <div class="t-name">5-STAR <small>· 2023</small></div>
+          <div class="t-desc">Su álbum más vendido y otro #1: la versión "cósmica" del grupo.</div>
+        </div>
+      </div>
+      <div class="top-item">
+        <div class="rank">5</div>
+        <div class="t-info">
+          <div class="t-name">ATE <small>· 2024</small></div>
+          <div class="t-desc">Con "Chk Chk Boom": récords de reproducción y la racha intacta.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEMBERS -->
+<section id="members">
+  <div class="section-head reveal">
+    <div class="kicker">02 — Los Miembros</div>
+    <h2>Ocho Lobos,<br />Una Manada</h2>
+    <p>Cada miembro carga una energía distinta — del núcleo de rap y producción de 3RACHA a las voces doradas de contratenor. Pasa el cursor por cualquier card para saber más.</p>
+  </div>
+
+  <div class="members-grid">
+
+    <article class="member reveal" data-member="bangchan">
+      <div class="photo"><img src="img/members/chan-2026.png" alt="Bang Chan de Stray Kids" loading="lazy" /></div>
+      <div class="shade"></div>
+      <div class="num">01</div>
+      <div class="info">
+        <div class="name">Bang Chan</div>
+        <div class="kr">방찬 · Christopher Bang</div>
+        <div class="roles">
+          <span class="role-tag">Líder</span>
+          <span class="role-tag">Productor</span>
+          <span class="role-tag unit">3RACHA</span>
+        </div>
+        <div class="bio">Nacido el 03 Oct 1997 · Sídney, Australia<br />El MENTOR del grupo: fundó 3RACHA junto a Changbin y Han.</div>
+      </div>
+    </article>
+
+    <article class="member reveal reveal-d1" data-member="leeknow">
+      <div class="photo"><img src="img/leeknow.png" alt="Lee Know de Stray Kids" loading="lazy" /></div>
+      <div class="shade"></div>
+      <div class="num">02</div>
+      <div class="info">
+        <div class="name">Lee Know</div>
+        <div class="kr">리노 · Lee Min-ho</div>
+        <div class="roles">
+          <span class="role-tag">Bailarín Principal</span>
+          <span class="role-tag">Vocal</span>
+          <span class="role-tag unit">DanceRacha</span>
+        </div>
+        <div class="bio">Nacido el 25 Oct 1998<br />También conocido como el 'papá de los gatos' del grupo — y el bailarín más afilado de 3RACHA.</div>
+      </div>
+    </article>
+
+    <article class="member reveal reveal-d2" data-member="changbin">
+      <div class="photo"><img src="img/changbin.png" alt="Changbin de Stray Kids" loading="lazy" /></div>
+      <div class="shade"></div>
+      <div class="num">03</div>
+      <div class="info">
+        <div class="name">Changbin</div>
+        <div class="kr">창빈 · Seo Chang-bin</div>
+        <div class="roles">
+          <span class="role-tag">Rapero</span>
+          <span class="role-tag">Productor</span>
+          <span class="role-tag unit">3RACHA</span>
+        </div>
+        <div class="bio">Nacido el 11 Ago 1999<br />Compositor detrás de la mayor parte de la discografía de SKZ. Voz celestial, barras demoníacas.</div>
+      </div>
+    </article>
+
+    <article class="member reveal reveal-d3" data-member="hyunjin">
+      <div class="photo"><img src="img/hyunjin.png" alt="Hyunjin de Stray Kids" loading="lazy" /></div>
+      <div class="shade"></div>
+      <div class="num">04</div>
+      <div class="info">
+        <div class="name">Hyunjin</div>
+        <div class="kr">현진 · Hwang Hyun-jin</div>
+        <div class="roles">
+          <span class="role-tag">Rapero</span>
+          <span class="role-tag">Bailarín</span>
+          <span class="role-tag unit">DanceRacha</span>
+        </div>
+        <div class="bio">Nacido el 20 Mar 2000<br />El visual del grupo — un artista que pinta, baila ballet y rapea como si fuera fácil.</div>
+      </div>
+    </article>
+
+    <article class="member reveal" data-member="han">
+      <div class="photo"><img src="img/han.png" alt="Han de Stray Kids" loading="lazy" /></div>
+      <div class="shade"></div>
+      <div class="num">05</div>
+      <div class="info">
+        <div class="name">Han</div>
+        <div class="kr">한 · Han Ji-sung</div>
+        <div class="roles">
+          <span class="role-tag">Vocal</span>
+          <span class="role-tag">Rapero</span>
+          <span class="role-tag unit">3RACHA</span>
+        </div>
+        <div class="bio">Nacido el 14 Sep 2000<br />El ace con la pluma más rápida de 3RACHA — comediante de corazón, genio en el escenario.</div>
+      </div>
+    </article>
+
+    <article class="member reveal reveal-d1" data-member="felix">
+      <div class="photo"><img src="img/felix.png" alt="Felix de Stray Kids" loading="lazy" /></div>
+      <div class="shade"></div>
+      <div class="num">06</div>
+      <div class="info">
+        <div class="name">Felix</div>
+        <div class="kr">필릭스 · Lee Yong-bok</div>
+        <div class="roles">
+          <span class="role-tag">Rapero</span>
+          <span class="role-tag">Bailarín</span>
+          <span class="role-tag unit">DanceRacha</span>
+        </div>
+        <div class="bio">Nacido el 15 Sep 2000 · Sídney, Australia<br />Sol de voz profunda — una dicotomía que no se explica, solo se siente.</div>
+      </div>
+    </article>
+
+    <article class="member reveal reveal-d2" data-member="seungmin">
+      <div class="photo"><img src="img/seungmin.png" alt="Seungmin de Stray Kids" loading="lazy" /></div>
+      <div class="shade"></div>
+      <div class="num">07</div>
+      <div class="info">
+        <div class="name">Seungmin</div>
+        <div class="kr">승민 · Kim Seung-min</div>
+        <div class="roles">
+          <span class="role-tag">Vocalista Principal</span>
+          <span class="role-tag unit">VocalRacha</span>
+        </div>
+        <div class="bio">Nacido el 22 Sep 2000<br />La voz dorada — un devoto de la música en vivo y, sin discusión, una de las voces más puras del K-Pop.</div>
+      </div>
+    </article>
+
+    <article class="member reveal reveal-d3" data-member="in">
+      <div class="photo"><img src="img/in.png" alt="I.N de Stray Kids" loading="lazy" /></div>
+      <div class="shade"></div>
+      <div class="num">08</div>
+      <div class="info">
+        <div class="name">I.N</div>
+        <div class="kr">아이엔 · Yang Jeong-in</div>
+        <div class="roles">
+          <span class="role-tag">Vocal</span>
+          <span class="role-tag unit">VocalRacha</span>
+        </div>
+        <div class="bio">Nacido el 08 Feb 2001<br />El maknae que dejó de ser un lobezno hace tiempo — ahora el visual afilado del grupo.</div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- GROUP -->
+<section id="group">
+  <div class="section-head reveal">
+    <div class="kicker">03 — La Manada</div>
+    <h2>Juntos como Uno</h2>
+    <p>Ya sea bajando del avión en el Aeropuerto de Incheon tras una gira mundial o posando en las premiaciones al otro lado del planeta — ocho, siempre.</p>
+  </div>
+
+  <div class="group-list">
+    <figure class="group-card reveal">
+      <img src="img/group1.png" alt="Stray Kids en el aeropuerto de Incheon" loading="lazy" />
+      <figcaption class="cap"><span class="dot"></span><span>Incheon Airport · May 2024</span></figcaption>
+    </figure>
+    <figure class="group-card reveal">
+      <img src="img/group2.png" alt="Stray Kids en el aeropuerto de Incheon" loading="lazy" />
+      <figcaption class="cap"><span class="dot"></span><span>Music Core Mini Fan Meeting · Nov 2023</span></figcaption>
+    </figure>
+    <figure class="group-card reveal">
+      <img src="img/group3.png" alt="Stray Kids en los Golden Disc Awards 2026" loading="lazy" />
+      <figcaption class="cap"><span class="dot"></span><span>40th Golden Disc Awards · Jan 2026</span></figcaption>
+    </figure>
+    <figure class="group-card reveal">
+      <img src="img/group4.png" alt="Stray Kids 2026" loading="lazy" />
+      <figcaption class="cap"><span class="dot"></span><span>The Fact Music Awards · Apr 2019</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- UNITS -->
+<section id="units">
+  <div class="section-head reveal">
+    <div class="kicker">04 — Las Unidades</div>
+    <h2>Las Rachas dentro de la Manada</h2>
+    <p>Hasta los lobos se dividen en escuadrones especializados. Estas son las tres rachas que hacen de SKZ una potencia autoproducida.</p>
+  </div>
+
+  <div class="units">
+    <div class="unit reveal">
+      <h3>3RACHA</h3>
+      <p>El núcleo de producción. Escribió, compuso y produjo casi toda la música de Stray Kids desde el pre-debut — la razón de que a SKZ se le llame 'self-made'.</p>
+      <div class="members-row">
+        <span>Bang Chan<small>CB97</small></span>
+        <span>Changbin<small>SPEARB</small></span>
+        <span>Han<small>J.ONE</small></span>
+      </div>
+    </div>
+    <div class="unit reveal reveal-d1">
+      <h3>DanceRacha</h3>
+      <p>El trío del performance. Bailarines principales con estilos imposiblemente distintos — felino, artístico y explosivo, dominan cada escenario.</p>
+      <div class="members-row">
+        <span>Lee Know<small>Bailarín Principal</small></span>
+        <span>Hyunjin<small>Performance</small></span>
+        <span>Felix<small>Stage Killer</small></span>
+      </div>
+    </div>
+    <div class="unit reveal reveal-d2">
+      <h3>VocalRacha</h3>
+      <p>La columna vocal. Dos voces que sostienen cada coro — y el maknae que se convirtió en un arma sobre el escenario.</p>
+      <div class="members-row">
+        <span>Seungmin<small>Vocalista Principal</small></span>
+        <span>I.N<small>Maknae</small></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo"><span class="logo-dot"></span> STRAY KIDS</div>
+  <p>TRIBUTO HECHO POR FANS · NO AFILIADO CON JYP ENTERTAINMENT</p>
+  <p class="credit">
+    Fotos a través de <a href="https://commons.wikimedia.org/wiki/Category:Stray_Kids" target="_blank" rel="noopener">Wikimedia Commons</a>, usadas bajo sus respectivas licencias. Los derechos pertenecen a los fotógrafos (티비텐, Marie Claire Korea, etc.) y a sus titulares.
+  </p>
+  <p class="credit">Hecho por Trini con ♥</p>
+</footer>
+
+<script>
+  const nav = document.getElementById("nav");
+  window.addEventListener("scroll", () => {
+    nav.classList.toggle("scrolled", window.scrollY > 40);
+  });
+
+  const tickerContent = document.getElementById("ticker").innerHTML;
+  document.getElementById("ticker").innerHTML = tickerContent.repeat(4);
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add("visible");
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+  document.querySelectorAll(".member").forEach((card) => {
+    const img = card.querySelector(".photo img");
+    if (!img) return;
+    const id = card.dataset.member;
+    const name = card.querySelector(".name") ? card.querySelector(".name").textContent : "integrante";
+
+    const pill = document.createElement("span");
+    pill.className = "view-profile";
+    pill.textContent = "Ver perfil →";
+    card.appendChild(pill);
+
+    const link = document.createElement("a");
+    link.className = "member-card";
+    link.href = "member.html?id=" + id;
+    link.setAttribute("aria-label", "Ver perfil de " + name);
+    card.parentNode.insertBefore(link, card);
+    link.appendChild(card);
+  });
+</script>
+</body>
+</html>
